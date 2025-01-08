@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: librespeed
-        image: nginx
+        image: librespeed/librespeed:latest
         ports:
         - name: web
           containerPort: 80
