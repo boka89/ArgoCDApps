@@ -49,7 +49,7 @@ metadata:
   namespace: app-test-1
 spec:
   rules:
-  - host: "app-test-1.bokors.net"
+  - host: "app-test-1.k3s.bokors.net"
     http:
       paths:
       - path: /
@@ -61,7 +61,7 @@ spec:
               number: 80
   tls:
   - hosts:
-    - app-test-1.bokors.net
+    - app-test-1.k3s.
     secretName: app-test-1-tls-secret              
 ---
 apiVersion: cert-manager.io/v1
