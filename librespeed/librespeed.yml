@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: librespeed
-        image: librespeed/librespeed:latest
+        image: linuxserver/librespeed
         ports:
         - name: web
           containerPort: 80
