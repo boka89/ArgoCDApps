@@ -59,20 +59,4 @@ spec:
             name: librespeed-svc 
             port:
               number: 80
-  tls:
-  - hosts:
-    - librespeed.bokors.net
-    secretName: librespeed-tls-secret              
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: librespeed-cert
-  namespace: librespeed
-spec:
-  secretName: librespeed-tls-secret
-  issuerRef:
-    name: ssl-issuer
-    kind: ClusterIssuer
-  dnsNames:
-    - librespeed.bokors.net
+          
