@@ -72,7 +72,7 @@ metadata:
 spec:
   secretName: app-test-1-tls-secret
   issuerRef:
-    name: ssl-issuer
+    name: cloudflare-clusterissuer
     kind: ClusterIssuer
   dnsNames:
     - app-test-1.bokors.net
