@@ -14,4 +14,4 @@ plex:
       memory: 250Mi
   middlewares: []
   secrets:
-    PLEX_CLAIM: "ImNsYWltLVpFNjFzTWR4Q3g4bnlDeW1fZHhTIgo="
+    PLEX_CLAIM: "Y2xhaW0tNzlRQlZFUmR0RmlzWDVFYUR6TG8K"
