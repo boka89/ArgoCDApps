@@ -12,6 +12,5 @@ qbittorrent:
     limits:
       cpu: 250m
       memory: 150Mi
-  middlewares: []
 
-  secrets: {password}
+  secrets: {}
