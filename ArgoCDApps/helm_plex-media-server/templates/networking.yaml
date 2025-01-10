@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-plex-media-server-svc
+  namespace: plex-media-server
+  labels:
+    app: plex-media-server
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 32400
+      targetPort: tcp-plex
+      protocol: TCP
+  selector:
+    app: plex-media-server
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: plex-media-server-ingress-https
+  namespace: plex-media-server
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
+spec:
+  rules:
+  - host: "{{.Values.plex.host}}"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Release.Name }}-plex-media-server-svc 
+            port:
+              number: 32400
+
+  tls:
+  - hosts:
+    - {{.Values.plex.host}}
+    secretName: plex-media-server-tls-secret              
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: plex-media-server-cert
+  namespace: plex-media-server
+spec:
+  secretName: plex-media-server-tls-secret
+  issuerRef:
+    name: cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - {{.Values.plex.host}}

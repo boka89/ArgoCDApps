@@ -1,0 +1,18 @@
+plex:
+  image: linuxserver/plex:1.41.3
+  downloads_folder:
+    size: 10Gi
+  config_folder:
+    size: 10Gi
+  host: plex.k3s.bokors.net
+  resources:
+    requests:
+      cpu: 50m
+      memory: 150Mi
+    limits:
+      cpu: 250m
+      memory: 250Mi
+  middlewares: []
+
+  secrets:
+    PLEX_CLAIM: ""
