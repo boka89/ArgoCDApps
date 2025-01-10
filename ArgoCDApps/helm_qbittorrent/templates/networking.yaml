@@ -21,7 +21,7 @@ metadata:
   name: qbittorrent-ingress-http
 spec:
   rules:
-  - host: "qbittorrent.k3s.bokors.net"
+  - host: "{{ .Values.plex.host }}"
     http:
       paths:
       - path: /
