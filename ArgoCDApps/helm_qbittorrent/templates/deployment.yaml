@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: qbittorrent
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 100%
+  selector:
+    matchLabels:
+      app: qbittorrent
+  template:
+    metadata:
+      labels:
+        app: qbittorrent
+    spec:
+      containers:
+        - name: qbittorrent
+          image: {{ .Values.qbittorrent.image }}
+          imagePullPolicy: Always
+          resources:
+            requests:
+            {{- range $k, $v := .Values.qbittorrent.resources.requests }}
+              {{ $k }}: {{ $v }}
+            {{- end }}
+            limits:
+            {{- range $k, $v := .Values.qbittorrent.resources.limits }}
+              {{ $k }}: {{ $v }}
+            {{- end }}
+          volumeMounts:
+            - mountPath: /config
+              name: qbittorrent-config
+            - mountPath: /downloads
+              name: qbittorrent-downloads
+          envFrom:
+            - secretRef:
+                name: {{ .Release.Name }}-qbittorrent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+      volumes:
+        - name: qbittorrent-config
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-qbittorrent-config
+        - name: qbittorrent-downloads
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-qbittorrent-downloads

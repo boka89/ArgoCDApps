@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-qbittorrent
+  labels:
+    app: qbittorrent
+spec:
+  type: ClusterIP
+  clusterIP: None
+  selector:
+    app: qbittorrent
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+      protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qbittorrent-ingress
+  namespace: qbittorrent
+spec:
+  rules:
+  - host: "qbittorrent.k3s.bokors.net"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Release.Name }}-qbittorrent 
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - qbittorrent.k3s.bokors.net
+    secretName: qbittorrent-tls-secret              
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: qbittorrent-cert
+  namespace: qbittorrent
+spec:
+  secretName: qbittorrent-tls-secret
+  issuerRef:
+    name: cloudflare-clusterissuer
+    kind: ClusterIssuer
+  dnsNames:
+    - qbittorrent.k3s.bokors.net
