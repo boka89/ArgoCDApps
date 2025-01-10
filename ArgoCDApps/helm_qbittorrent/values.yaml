@@ -4,7 +4,7 @@ qbittorrent:
     size: 5Gi
   config_folder:
     size: 3Gi
-  host: toto
+  host: qbittorrent.k3s.bokors.net
   resources:
     requests:
       cpu: 50m
