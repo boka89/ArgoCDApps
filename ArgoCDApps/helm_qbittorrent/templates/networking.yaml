@@ -32,7 +32,7 @@ spec:
           service:
             name: {{ .Release.Name }}-qbittorrent 
             port:
-              number: 80
+              number: 8080
   tls:
   - hosts:
     - qbittorrent.k3s.bokors.net
