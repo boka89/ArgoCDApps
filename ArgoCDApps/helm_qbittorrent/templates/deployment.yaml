@@ -6,7 +6,7 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}
+  name: qbittorrent
   labels:
     app: qbittorrent
 spec:
