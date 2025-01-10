@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: plex-media-server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  namespace: plex-media-server
+  labels:
+    app: plex-media-server
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 100%
+  selector:
+    matchLabels:
+      app: plex-media-server
+  template:
+    metadata:
+      labels:
+        app: plex-media-server
+    spec:
+      containers:
+      - name: plex
+          image: {{ .Values.plex.image }}
+          imagePullPolicy: Always
+          resources:
+            requests:
+            {{- range $k, $v := .Values.plex.resources.requests }}
+              {{ $k }}: {{ $v }}
+            {{- end }}
+            limits:
+            {{- range $k, $v := .Values.plex.resources.limits }}
+              {{ $k }}: {{ $v }}
+            {{- end }}
+          volumeMounts:
+            - mountPath: /config
+              name: plex-config
+            - mountPath: /media
+              name: plex-media
+          ports:
+            - name: tcp-plex
+              containerPort: 32400
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: {{ .Release.Name }}-plex
+      volumes:
+        - name: plex-config
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-plex-config
+        - name: plex-media
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-plex-media
