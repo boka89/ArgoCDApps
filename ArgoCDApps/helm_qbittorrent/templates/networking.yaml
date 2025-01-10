@@ -10,7 +10,7 @@ spec:
   ports:
     - name: http
       port: 8080
-      targetPort: http
+      targetPort: https
       protocol: TCP
   selector:
     app: qbittorrent
@@ -18,7 +18,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: qbittorrent-ingress-http
+  name: qbittorrent-ingress-https
   namespace: qbittorrent
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
