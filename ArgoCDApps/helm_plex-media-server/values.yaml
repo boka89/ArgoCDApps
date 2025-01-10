@@ -15,4 +15,4 @@ plex:
   middlewares: []
 
   secrets:
-    PLEX_CLAIM: "fhjkhdfjkhdsjgshdghsdk"
+    PLEX_CLAIM: "claim-ZE61sMdxCx8nyCym_dxS"
