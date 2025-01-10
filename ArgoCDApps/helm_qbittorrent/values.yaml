@@ -14,4 +14,4 @@ qbittorrent:
       memory: 150Mi
   middlewares: []
 
-  secrets: {}
+  secrets: {password}
