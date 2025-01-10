@@ -3,7 +3,7 @@ plex:
   downloads_folder:
     size: 10Gi
   config_folder:
-    size: 10Gi
+    size: 5Gi
   host: plex.k3s.bokors.net
   resources:
     requests:
