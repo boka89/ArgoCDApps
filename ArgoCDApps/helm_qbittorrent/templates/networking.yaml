@@ -19,6 +19,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: qbittorrent-ingress-http
+  namespace: qbittorrent
+  annotations:
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
 spec:
   rules:
   - host: "{{.Values.qbittorrent.host}}"
