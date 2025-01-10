@@ -21,6 +21,7 @@ metadata:
   name: qbittorrent-ingress-http
   namespace: qbittorrent
   annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/redirect-entry-point: https
 spec:
   rules:
