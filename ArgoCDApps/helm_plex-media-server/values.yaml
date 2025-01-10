@@ -13,6 +13,5 @@ plex:
       cpu: 250m
       memory: 250Mi
   middlewares: []
-
   secrets:
     PLEX_CLAIM: "claim-ZE61sMdxCx8nyCym_dxS"
