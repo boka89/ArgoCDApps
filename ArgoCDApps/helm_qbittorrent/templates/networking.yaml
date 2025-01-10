@@ -7,7 +7,6 @@ metadata:
     app: qbittorrent
 spec:
   type: ClusterIP
-  clusterIP: None
   ports:
     - name: http
       port: 8080
@@ -16,41 +15,23 @@ spec:
   selector:
     app: qbittorrent
 ---
-#apiVersion: networking.k8s.io/v1
-#kind: Ingress
-#metadata:
-#  name: qbittorrent-ingress
-#spec:
-#  rules:
-#  - host: "qbittorrent.k3s.bokors.net"
-#    http:
-#      paths:
-#      - path: /
-#        pathType: Prefix
-#        backend:
-#          service:
-#            name: {{ .Release.Name }}-qbittorrent-svc 
-#            port:
-#              number: 8080
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: {{ .Release.Name }}-qbittorrent-ingress
+  name: qbittorrent-ingress
 spec:
-  entryPoints:
-    - websecure
-  routes:
-    - match: Host(`{{ required "A valid qbittorent host is required!" .Values.qbittorrent.host }}`)
-      kind: Rule
-      services:
-        - name: {{ .Release.Name }}-qbittorrent-svc
-          port: 8080
-      {{- if .Values.qbittorrent.middlewares }}
-      middlewares:
-      {{- range $v := .Values.qbittorrent.middlewares }}
-        - name: {{ $v }}
-      {{- end }}
-      {{- end }}
+  rules:
+  - host: "qbittorrent.k3s.bokors.net"
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: {{ .Release.Name }}-qbittorrent-svc 
+            port:
+              number: 8080
+
   tls:
   - hosts:
     - qbittorrent.k3s.bokors.net
