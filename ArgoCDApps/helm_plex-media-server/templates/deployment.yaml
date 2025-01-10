@@ -26,18 +26,18 @@ spec:
         app: plex-media-server
     spec:
       containers:
-      - name: plex
+        - name: plex
           image: {{ .Values.plex.image }}
           imagePullPolicy: Always
           resources:
             requests:
-            {{- range $k, $v := .Values.plex.resources.requests }}
+              {{- range $k, $v := .Values.plex.resources.requests }}
               {{ $k }}: {{ $v }}
-            {{- end }}
+              {{- end }}
             limits:
-            {{- range $k, $v := .Values.plex.resources.limits }}
+              {{- range $k, $v := .Values.plex.resources.limits }}
               {{ $k }}: {{ $v }}
-            {{- end }}
+              {{- end }}
           volumeMounts:
             - mountPath: /config
               name: plex-config
