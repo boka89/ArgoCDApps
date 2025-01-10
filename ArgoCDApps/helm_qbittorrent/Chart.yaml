@@ -1,5 +1,5 @@
 apiVersion: v2
-name: qbittorent-plex
+name: qbittorent
 description: A helm chart to deploy qbittorrent
 type: application
 version: 0.1.0
