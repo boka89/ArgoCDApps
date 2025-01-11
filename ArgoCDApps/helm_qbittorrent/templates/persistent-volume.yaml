@@ -6,7 +6,7 @@ metadata:
 spec:
   accessModes:
   - ReadWriteMany
-  stiorageClassName: longhorn
+  storageClassName: longhorn
   resources:
     requests:
       storage: {{ .Values.qbittorrent.downloads_folder.size }}
@@ -19,7 +19,7 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  stiorageClassName: longhorn
+  storageClassName: longhorn
   resources:
     requests:
       storage: {{ .Values.qbittorrent.config_folder.size }}
