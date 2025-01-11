@@ -5,6 +5,7 @@ metadata:
   namespace: plex-media-server
 spec:
   accessModes:
+  storageClassName: longhorn
   - ReadWriteOnce
   resources:
     requests:
@@ -17,7 +18,8 @@ metadata:
   namespace: plex-media-server
 spec:
   accessModes:
-  - ReadWriteOnce
+  storageClassName: longhorn
+  - ReadWriteMany
   resources:
     requests:
       storage: {{ .Values.plex.downloads_folder.size }}

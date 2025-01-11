@@ -1,4 +1,18 @@
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: qbittorrent-downloads-pv
+spec:
+  capacity:
+    storage: {{ .Values.qbittorrent.downloads_folder.size }}
+  accessModes:
+    - ReadWriteMany
+  storageClassName: longhorn
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/mnt/data/qbittorrent-downloads"
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ .Release.Name }}-qbittorrent-downloads
@@ -10,7 +24,7 @@ spec:
   resources:
     requests:
       storage: {{ .Values.qbittorrent.downloads_folder.size }}
-  volumeName: media-downloads
+  volumeName: qbittorrent-downloads-pv
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
