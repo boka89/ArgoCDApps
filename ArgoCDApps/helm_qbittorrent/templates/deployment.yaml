@@ -56,4 +56,4 @@ spec:
             claimName: qbittorrent-config
         - name: qbittorrent-downloads
           persistentVolumeClaim:
-            claimName: qbittorrent-downloads-plex-media-pv
+            claimName: qbittorrent-downloads-plex-media
