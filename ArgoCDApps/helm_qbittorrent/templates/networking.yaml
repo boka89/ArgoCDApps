@@ -24,8 +24,6 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/redirect-entry-point: https
 spec:
-  entryPoints:
-    - websecure
   rules:
   - host: "{{.Values.qbittorrent.host}}"
     http:
