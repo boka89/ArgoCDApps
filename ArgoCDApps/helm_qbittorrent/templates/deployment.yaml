@@ -53,7 +53,7 @@ spec:
       volumes:
         - name: qbittorrent-config
           persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-qbittorrent-config
+            claimName: qbittorrent-config
         - name: qbittorrent-downloads
           persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-qbittorrent-downloads
+            claimName: qbittorrent-downloads-plex-media-pv
