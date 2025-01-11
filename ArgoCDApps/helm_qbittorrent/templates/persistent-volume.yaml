@@ -15,7 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Release.Name }}-qbittorrent-downloads
+  name: {{ .Release.Name }}-media
   namespace: qbittorrent
 spec:
   accessModes:

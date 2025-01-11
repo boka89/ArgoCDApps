@@ -14,7 +14,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Release.Name }}-plex-media
+  name: {{ .Release.Name }}-media
   namespace: plex-media-server
 spec:
   accessModes:
@@ -23,4 +23,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.plex.downloads_folder.size }}
-  #volumeName: qbittorrent-downloads-pv
+  volumeName: qbittorrent-downloads-pv
