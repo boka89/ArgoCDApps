@@ -10,6 +10,7 @@ spec:
   resources:
     requests:
       storage: {{ .Values.qbittorrent.downloads_folder.size }}
+      claimName: media-downloads
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

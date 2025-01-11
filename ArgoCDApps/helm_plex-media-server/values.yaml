@@ -1,9 +1,9 @@
 plex:
   image: linuxserver/plex:1.41.3
   downloads_folder:
-    size: 10Gi
-  config_folder:
     size: 5Gi
+  config_folder:
+    size: 1Gi
   host: plex.k3s.bokors.net
   resources:
     requests:
