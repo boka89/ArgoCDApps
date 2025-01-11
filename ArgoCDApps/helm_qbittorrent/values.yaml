@@ -3,7 +3,7 @@ qbittorrent:
   downloads_folder:
     size: 5Gi
   config_folder:
-    size: 3Gi
+    size: 1Gi
   host: qbittorrent.k3s.bokors.net
   resources:
     requests:
