@@ -9,8 +9,6 @@ spec:
     - ReadWriteMany
   storageClassName: longhorn
   persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: "/mnt/data/qbittorrent-downloads"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
