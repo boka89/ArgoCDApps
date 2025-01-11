@@ -20,21 +20,29 @@ kind: Ingress
 metadata:
   name: qbittorrent-ingress-https
   namespace: qbittorrent
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/redirect-entry-point: https
+  #annotations:
+  #  traefik.ingress.kubernetes.io/router.entrypoints: websecure
+  #  traefik.ingress.kubernetes.io/redirect-entry-point: https
 spec:
-  rules:
-  - host: "{{.Values.qbittorrent.host}}"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: {{ .Release.Name }}-qbittorrent-svc 
-            port:
-              number: 8080
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`{{.Values.qbittorrent.host}}`)
+      services:
+        - name: {{ .Release.Name }}-qbittorrent-svc
+          port: 8080
+  #rules:
+  #- host: "{{.Values.qbittorrent.host}}"
+  #  http:
+  #    paths:
+  #    - path: /
+  #      pathType: Prefix
+  #      backend:
+  #        service:
+  #          name: {{ .Release.Name }}-qbittorrent-svc 
+  #          port:
+  #            number: 8080
 
   tls:
   - hosts:
