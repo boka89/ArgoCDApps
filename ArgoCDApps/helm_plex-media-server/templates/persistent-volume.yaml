@@ -23,4 +23,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.plex.downloads_folder.size }}
-  volumeName: qbittorrent-downloads-pv
+  volumeName: qbittorrent-downloads-plex-media-pv
