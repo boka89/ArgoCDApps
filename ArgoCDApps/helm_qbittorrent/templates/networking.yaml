@@ -22,24 +22,23 @@ metadata:
   namespace: qbittorrent
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/redirect-entry-point: https
+    traefik.ingress.kubernetes.io/redirect-entry-point: websecure
 spec:
   rules:
-  - host: "{{.Values.qbittorrent.host}}"
+  - host: "{{ .Values.qbittorrent.host }}"
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: {{ .Release.Name }}-qbittorrent-svc 
+            name: {{ .Release.Name }}-qbittorrent-svc
             port:
               number: 8080
-
   tls:
   - hosts:
-    - {{.Values.qbittorrent.host}}
-    secretName: qbittorrent-tls-secret              
+    - "{{ .Values.qbittorrent.host }}"
+    secretName: qbittorrent-tls-secret           
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
