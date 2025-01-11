@@ -22,7 +22,7 @@ metadata:
   namespace: plex-media-server
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/redirect-entry-point: https
+    traefik.ingress.kubernetes.io/redirect-entry-point: websecure
 spec:
   rules:
   - host: "{{.Values.plex.host}}"
