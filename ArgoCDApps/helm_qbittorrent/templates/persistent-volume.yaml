@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: qbittorrent-downloads-plex-media-pv
+  namespace: k3s-global
 spec:
   capacity:
     storage: {{ .Values.qbittorrent.downloads_folder.size }}
