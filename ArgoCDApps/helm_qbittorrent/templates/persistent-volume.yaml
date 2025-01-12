@@ -20,6 +20,7 @@ metadata:
 spec:
   accessModes:
   - ReadWriteMany
+  storageClassName: nfs-storage
   resources:
     requests:
       storage: {{ .Values.qbittorrent.downloads_folder.size }}
