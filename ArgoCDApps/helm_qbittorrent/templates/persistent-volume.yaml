@@ -19,9 +19,9 @@ metadata:
 spec:
   accessModes:
   - ReadWriteMany
-  nfs:
-    path: /volume1/MEDIA
-    server: 192.168.10.10
+  resources:
+    requests:
+      storage: {{ .Values.qbittorrent.downloads_folder.size }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
