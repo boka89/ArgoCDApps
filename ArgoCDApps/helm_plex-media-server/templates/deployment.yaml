@@ -56,4 +56,4 @@ spec:
             claimName: {{ .Release.Name }}-plex-config
         - name: plex-media
           persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-plex-media
+            claimName: qbittorrent-downloads-plex-media
