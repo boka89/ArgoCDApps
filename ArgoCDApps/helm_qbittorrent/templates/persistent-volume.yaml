@@ -1,3 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: qbittorrent-downloads-plex-media-pv
+spec:
+  capacity:
+    storage: {{ .Values.qbittorrent.downloads_folder.size }}
+  accessModes:
+  - ReadWriteMany
+  nfs:
+    path: /volume1/MEDIA
+    server: 192.168.10.10
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -5,8 +17,6 @@ metadata:
   name: qbittorrent-downloads-plex-media
   namespace: qbittorrent
 spec:
-  capacity:
-    storage: {{ .Values.qbittorrent.downloads_folder.size }}
   accessModes:
   - ReadWriteMany
   nfs:
