@@ -14,12 +14,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Release.Name }}-media
+  name: qbittorrent-downloads-plex-media
   namespace: plex-media-server
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: longhorn
+  storageClassName: nfs-storage
   resources:
     requests:
       storage: {{ .Values.plex.downloads_folder.size }}
