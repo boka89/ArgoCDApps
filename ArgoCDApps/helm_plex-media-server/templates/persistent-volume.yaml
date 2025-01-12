@@ -4,7 +4,7 @@ metadata:
   name: qbittorrent-downloads-plex-media-pv
 spec:
   capacity:
-    storage: {{ .Values.qbittorrent.downloads_folder.size }}
+    storage: {{ .Values.plex.downloads_folder.size }}
   accessModes:
   - ReadWriteMany
   storageClassName: nfs-storage
