@@ -9,7 +9,7 @@ spec:
   - ReadWriteMany
   storageClassName: nfs-storage
   nfs:
-    path: /volume1/MEDIA
+    path: /volume1/MEDIAA
     server: 192.168.10.10
 ---
 apiVersion: v1
