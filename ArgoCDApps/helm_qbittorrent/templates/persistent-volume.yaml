@@ -7,7 +7,6 @@ spec:
   accessModes:
   - ReadWriteMany
   storageClassName: nfs-client
-  retainPolicy: Retain
   resources:
     requests:
       storage: {{ .Values.qbittorrent.downloads_folder.size }}
@@ -21,7 +20,6 @@ spec:
   accessModes:
   - ReadWriteMany
   storageClassName: longhorn
-  retainPolicy: Retain
   resources:
     requests:
       storage: {{ .Values.qbittorrent.config_folder.size }}
