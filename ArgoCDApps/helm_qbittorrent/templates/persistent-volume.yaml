@@ -7,7 +7,7 @@ spec:
     storage: {{ .Values.qbittorrent.downloads_folder.size }}
   accessModes:
   - ReadWriteMany
-  storageClassName: slow
+  storageClassName: nfs-storage
   nfs:
     path: /volume1/MEDIA
     server: 192.168.10.10
