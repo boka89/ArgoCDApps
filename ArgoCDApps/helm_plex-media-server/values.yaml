@@ -13,4 +13,4 @@ plex:
       cpu: 250m
       memory: 250Mi
   middlewares: []
-  claim: claim-D64oYQP2NMmXF8vjrDiY  
+  claim: claim-CsJ_-crC_UhD5S1kV1ED  
