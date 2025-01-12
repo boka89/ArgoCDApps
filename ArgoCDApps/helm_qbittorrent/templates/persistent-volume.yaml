@@ -7,10 +7,9 @@ metadata:
 spec:
   accessModes:
   - ReadWriteMany
-  storageClassName: longhorn
-  resources:
-    requests:
-      storage: {{ .Values.qbittorrent.downloads_folder.size }}
+  nfs:
+    path: /volume1/MEDIA
+    server: 192.168.10.10
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -19,7 +18,7 @@ metadata:
   namespace: qbittorrent
 spec:
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   storageClassName: longhorn
   resources:
     requests:
