@@ -5,6 +5,8 @@ metadata:
   name: qbittorrent-downloads-plex-media
   namespace: qbittorrent
 spec:
+  capacity:
+    storage: {{ .Values.qbittorrent.downloads_folder.size }}
   accessModes:
   - ReadWriteMany
   nfs:
