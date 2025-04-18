@@ -4,7 +4,7 @@ metadata:
   name: nfs-snfs01-slyshu-qbit-media
 spec:
   capacity:
-    storage: 5000Gi
+    storage: 6800Gi
   accessModes:
     - ReadWriteMany
   storageClassName: nfs-client
