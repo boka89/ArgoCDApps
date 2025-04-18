@@ -1,5 +1,5 @@
 plex:
-  image: linuxserver/plex:1.41.3
+  image: linuxserver/plex:latest
   downloads_folder:
     size: 6000Gi
   config_folder:
