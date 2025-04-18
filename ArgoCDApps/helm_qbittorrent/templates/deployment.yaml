@@ -43,6 +43,10 @@ spec:
               name: qbittorrent-config
             - mountPath: /downloads
               name: qbittorrent-downloads
+          securityContext:
+            runAsUser: 1000
+            fsGroup: 1000
+            privileged: true
           envFrom:
             - secretRef:
                 name: {{ .Release.Name }}-qbittorrent
